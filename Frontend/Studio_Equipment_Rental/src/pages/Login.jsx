@@ -10,13 +10,14 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
+import "./Login.css";
+
 function Login() {
   const navigate = useNavigate();
 
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
 
-  // Auto redirect if already logged in
   useEffect(() => {
     const token = localStorage.getItem("access");
     if (token) {
@@ -24,7 +25,6 @@ function Login() {
     }
   }, []);
 
-  // 🔐 Setup Recaptcha
   const setupRecaptcha = () => {
     if (window.recaptchaVerifier) {
       window.recaptchaVerifier.clear();
@@ -35,14 +35,10 @@ function Login() {
       "recaptcha-container",
       {
         size: "invisible",
-        callback: () => {
-          console.log("Recaptcha Verified");
-        },
       },
     );
   };
 
-  // 📱 Send OTP
   const sendOtp = async () => {
     try {
       setupRecaptcha();
@@ -66,7 +62,6 @@ function Login() {
     }
   };
 
-  // 📱 Verify OTP
   const verifyOtp = async () => {
     try {
       const result = await window.confirmationResult.confirm(otp);
@@ -86,7 +81,6 @@ function Login() {
     }
   };
 
-  // 🔵 Google Login
   const googleLogin = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -109,34 +103,49 @@ function Login() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
-      <h2>Login Page</h2>
+    <div className="login-page">
+      <div className="login-container">
+        <h2>Welcome Back</h2>
+        <p className="subtitle">Login to continue</p>
 
-      {/* 📱 Phone Login */}
-      <input
-        placeholder="Enter phone"
-        onChange={(e) => setPhone(e.target.value)}
-      />
-      <br />
-      <br />
+        {/* Phone */}
+        <div className="input-group">
+          <input
+            type="text"
+            required
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <label>Phone Number</label>
+        </div>
 
-      <button onClick={sendOtp}>Send OTP</button>
+        <button className="primary-btn" onClick={sendOtp}>
+          Send OTP
+        </button>
 
-      <br />
-      <br />
+        {/* OTP */}
+        <div className="input-group">
+          <input
+            type="text"
+            required
+            onChange={(e) => setOtp(e.target.value)}
+          />
+          <label>Enter OTP</label>
+        </div>
 
-      <input placeholder="Enter OTP" onChange={(e) => setOtp(e.target.value)} />
-      <br />
-      <br />
+        <button className="primary-btn" onClick={verifyOtp}>
+          Verify & Login
+        </button>
 
-      <button onClick={verifyOtp}>Verify OTP</button>
+        <div id="recaptcha-container"></div>
 
-      <div id="recaptcha-container"></div>
+        <div className="divider">
+          <span>OR</span>
+        </div>
 
-      <hr />
-
-      {/* 🔵 Google Login */}
-      <button onClick={googleLogin}>Login with Google</button>
+        <button className="secondary-btn" onClick={googleLogin}>
+          Continue with Google
+        </button>
+      </div>
     </div>
   );
 }

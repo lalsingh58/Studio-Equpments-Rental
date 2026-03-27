@@ -1,0 +1,152 @@
+/* 🌙 Page */
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background: #121212; */
+  font-family: "Inter", "Montserrat", sans-serif;
+
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px
+  );
+  background-size: 3px 3px;
+}
+
+/* 🧊 Card */
+.login-container {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+
+  text-align: center;
+  color: white;
+}
+
+/* Title */
+.login-container h2 {
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+/* ✏️ Floating Input */
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 10px;
+
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444;
+
+  color: #fff;
+  outline: none;
+}
+
+/* label */
+.input-group label {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  color: #888;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* animation */
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  font-size: 11px;
+  color: #ffb800;
+}
+
+/* glow */
+.input-group input:focus {
+  border-bottom: 1px solid #ffb800;
+  box-shadow: 0 2px 8px rgba(255, 184, 0, 0.3);
+}
+
+/* 🔘 Primary Button */
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #ffb800;
+  color: #121212;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  background: #ffc933;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 184, 0, 0.4);
+}
+
+/* ⚪ Secondary */
+.secondary-btn {
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 8px;
+  border: 1px solid #333;
+
+  background: transparent;
+  color: white;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.secondary-btn:hover {
+  border-color: #ffb800;
+  color: #ffb800;
+}
+
+/* Divider */
+.divider {
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+}
+
+.divider span {
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .login-container {
+    margin: 20px;
+    padding: 25px;
+  }
+}
