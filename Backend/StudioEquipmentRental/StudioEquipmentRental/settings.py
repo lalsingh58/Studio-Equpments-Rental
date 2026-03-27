@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-from .firebase import initialize_firebase
+from authenticate.firebase import initialize_firebase
 
 initialize_firebase()
 
@@ -133,6 +133,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+AUTH_USER_MODEL = 'authenticate.User'
 
 from datetime import timedelta
 
