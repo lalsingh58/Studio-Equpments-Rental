@@ -17,16 +17,3 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-
-// installHook.js:1 TypeError: Cannot read properties of undefined (reading 'appVerificationDisabledForTesting')
-//     at new RecaptchaVerifier (index-dfb5c973.js:8634:52)
-//     at setupRecaptcha (App.jsx:18:32)
-//     at sendOtp (App.jsx:28:7)
-//     at executeDispatch (react-dom-client.development.js:19116:9)
-//     at runWithFiberInDEV (react-dom-client.development.js:871:30)
-//     at processDispatchQueue (react-dom-client.development.js:19166:19)
-//     at react-dom-client.development.js:19767:9
-//     at batchedUpdates$1 (react-dom-client.development.js:3255:40)
-//     at dispatchEventForPluginEventSystem (react-dom-client.development.js:19320:7)
-//     at dispatchEvent (react-dom-client.development.js:23585:11)
-// overrideMethod @ installHook.js:1
